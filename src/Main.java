@@ -17,12 +17,12 @@ public class Main {
 
         System.out.println("");
 
-//        Toy toy3 = new Toy("конструктор", 25, 10);
-//        newToys.add(toy3);
-//        Toy.safeFile(newToys, filename);
-//        ArrayList<Toy> newToys2= Toy.readFile(filename);
-//        for(Toy t : newToys2)
-//            System.out.println(t.toString());
+        Toy toy3 = new Toy("конструктор", 25, 10);
+        newToys.add(toy3);
+        Toy.safeFile(newToys, filename);
+        ArrayList<Toy> newToys2= Toy.readFile(filename);
+        for(Toy t : newToys2)
+            System.out.println(t.toString());
     }
 
 }

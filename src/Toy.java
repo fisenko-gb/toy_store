@@ -61,6 +61,7 @@ public class Toy implements Serializable{
         {
 
             newToys = ((ArrayList<Toy>)ois.readObject());
+            ch = newToys.size();
         }
         catch(Exception ex){
 
