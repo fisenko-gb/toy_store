@@ -4,25 +4,24 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        String filename = "toys.dat";
 
-        if (! new File(filename).isFile()) {
-            Toy.testData(filename);
+        if (! new File(Toy.filename).isFile()) {
+            Toy.testData();
         }
 
-        ArrayList<Toy> newToys= Toy.readFile(filename);
+        System.out.println("Призы: ");
+        Toy.getPrizeToy(10);
+
+//        Toy toy1 = new Toy("Мягкая игрушка", 2, 17);
+//        Toy toy2 = new Toy("Мягинькая игрушка", 2, 17);
+
+        System.out.println("список: ");
+        ArrayList<Toy> newToys= Toy.readFile();
 
         for(Toy t : newToys)
             System.out.println(t.toString());
 
         System.out.println("");
-
-        Toy toy3 = new Toy("конструктор", 25, 10);
-        newToys.add(toy3);
-        Toy.safeFile(newToys, filename);
-        ArrayList<Toy> newToys2= Toy.readFile(filename);
-        for(Toy t : newToys2)
-            System.out.println(t.toString());
     }
 
 }
