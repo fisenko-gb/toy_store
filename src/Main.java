@@ -51,12 +51,12 @@ public class Main {
                     System.out.println("Введите наименование игрушки: ");
                     try {
                         name = in.nextLine();
-                        if (name == ""){
+                        if (name == "") {
                             System.out.println("Наименование не может быть пустым...");
                             continue;
                         }
                         break;
-                    }catch (Exception ex) {
+                    } catch (Exception ex) {
                         System.out.println("Наименование не может быть пустым...");
                     }
                 }
@@ -76,7 +76,7 @@ public class Main {
                     System.out.println("Введите частоту выпадения для данной игрушки: ");
                     try {
                         frequency = in.nextInt();
-                        if (frequency <= 0 || frequency > 100){
+                        if (frequency <= 0 || frequency > 100) {
                             System.out.println("Частота выпадения может лежать в интервале от 1 до 100");
                             continue;
                         }
@@ -109,31 +109,6 @@ public class Main {
                 break;
             }
         }
-
-
-//        Scanner in = new Scanner(System.in);
-//        System.out.print("Input name: ");
-//        String name = in.nextLine();
-//        System.out.print("Input age: ");
-//        int age = in.nextInt();
-//        System.out.print("Input height: ");
-//        float height = in.nextFloat();
-//        System.out.printf("Name: %s  Age: %d  Height: %.2f \n", name, age, height);
-//        in.close();
-
-//        System.out.println("Призы: ");
-//        Toy.getPrizeToy(10);
-//
-////        Toy toy1 = new Toy("Мягкая игрушка", 2, 17);
-////        Toy toy2 = new Toy("Мягинькая игрушка", 2, 17);
-//
-//        System.out.println("список: ");
-//        ArrayList<Toy> newToys= Toy.readFile();
-//
-//        for(Toy t : newToys)
-//            System.out.println(t.toString());
-//
-//        System.out.println("");
     }
 
 }
