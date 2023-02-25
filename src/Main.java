@@ -1,27 +1,139 @@
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 public class Main {
     public static void main(String[] args) {
 
-        if (! new File(Toy.filename).isFile()) {
+        String message_hi = "Добро пожаловать в программу Магазин игрушек!\n ";
+        String message_bay = "До скорых встреч!";
+
+        String message_level1 = """
+                Вот какие действия Вам доступны:
+                1 - Показать все игрушки
+                2 - Добавить(изменить количество) игрушку
+                3 - Разыграть игрушки
+                4 - Выход
+                введите цифру с необходимым действием: """;
+
+        if (!new File(Toy.filename).isFile()) {
             Toy.testData();
         }
 
-        System.out.println("Призы: ");
-        Toy.getPrizeToy(10);
+        System.out.println(message_hi);
+        while (true) {
+            System.out.println(message_level1);
+            Scanner in = new Scanner(System.in);
+            int menu;
+            try {
+                menu = in.nextInt();
+                in.nextLine();
+            } catch (Exception ex) {
+                System.out.println("Ввоодить можно только числа...");
+                continue;
+            }
+            if (menu == 1) {
+                System.out.println("Cписок всех игрушек: ");
+                ArrayList<Toy> newToys = Toy.readFile();
 
-//        Toy toy1 = new Toy("Мягкая игрушка", 2, 17);
-//        Toy toy2 = new Toy("Мягинькая игрушка", 2, 17);
+                for (Toy t : newToys)
+                    System.out.println(t.toString());
 
-        System.out.println("список: ");
-        ArrayList<Toy> newToys= Toy.readFile();
+                System.out.println("");
 
-        for(Toy t : newToys)
-            System.out.println(t.toString());
+            } else if (menu == 2) {
+                String name;
+                int quantity;
+                int frequency;
 
-        System.out.println("");
+                while (true) {
+                    System.out.println("Введите наименование игрушки: ");
+                    try {
+                        name = in.nextLine();
+                        if (name == ""){
+                            System.out.println("Наименование не может быть пустым...");
+                            continue;
+                        }
+                        break;
+                    }catch (Exception ex) {
+                        System.out.println("Наименование не может быть пустым...");
+                    }
+                }
+
+                while (true) {
+                    System.out.println("Введите количество для данной игрушки: ");
+                    try {
+                        quantity = in.nextInt();
+                        break;
+                    } catch (Exception ex) {
+                        System.out.println("Ввоодить можно только числа...");
+                        in.nextLine();
+                    }
+                }
+
+                while (true) {
+                    System.out.println("Введите частоту выпадения для данной игрушки: ");
+                    try {
+                        frequency = in.nextInt();
+                        if (frequency <= 0 || frequency > 100){
+                            System.out.println("Частота выпадения может лежать в интервале от 1 до 100");
+                            continue;
+                        }
+                        break;
+                    } catch (Exception ex) {
+                        System.out.println("Ввоодить можно только числа...");
+                        in.nextLine();
+                    }
+                }
+
+                Toy toy1 = new Toy(name, quantity, frequency);
+                System.out.println("Игрушка сохранена.");
+
+            } else if (menu == 3) {
+                int count = 0;
+                while (true) {
+                    System.out.println("Введите количество разыгрываемых игрушек: ");
+                    try {
+                        count = in.nextInt();
+                        break;
+                    } catch (Exception ex) {
+                        System.out.println("Ввоодить можно только числа...");
+                        in.nextLine();
+                    }
+                }
+                Toy.getPrizeToy(count);
+            } else if (menu == 4) {
+                in.close();
+                System.out.println(message_bay);
+                break;
+            }
+        }
+
+
+//        Scanner in = new Scanner(System.in);
+//        System.out.print("Input name: ");
+//        String name = in.nextLine();
+//        System.out.print("Input age: ");
+//        int age = in.nextInt();
+//        System.out.print("Input height: ");
+//        float height = in.nextFloat();
+//        System.out.printf("Name: %s  Age: %d  Height: %.2f \n", name, age, height);
+//        in.close();
+
+//        System.out.println("Призы: ");
+//        Toy.getPrizeToy(10);
+//
+////        Toy toy1 = new Toy("Мягкая игрушка", 2, 17);
+////        Toy toy2 = new Toy("Мягинькая игрушка", 2, 17);
+//
+//        System.out.println("список: ");
+//        ArrayList<Toy> newToys= Toy.readFile();
+//
+//        for(Toy t : newToys)
+//            System.out.println(t.toString());
+//
+//        System.out.println("");
     }
 
 }
